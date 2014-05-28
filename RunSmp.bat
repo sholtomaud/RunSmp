@@ -39,7 +39,7 @@ rem Comment this out for production
 rem set array_files=C:\Dev\batch_files\array_files
 rem echo array_files %array_files% >> debug.txt
 
-for /f %%f in ('dir /b %head%.*') do (
+for /f %%f in ('dir /b %head1%.*') do (
   rem Increment file_count by 1
   set /a arrayFileCount+=1
   set arrayFile=%%f
@@ -54,8 +54,8 @@ for /f %%f in ('dir /b %head%.*') do (
   
   rem Normalise filename to sub periods for underscore & create inFile name and outFile name
   set FileName=!FileName:.=_!
-  set inFile=MOD2SMP_!FileName!.in
-  set outFile=mod2smp_!FileName!.txt
+  set inFile=!FileName!.in
+  set outFile=!FileName!.txt
   
   rem Bit of debugging. 
   rem echo file %%f arrayFileCount [!arrayFileCount!] inFile [!inFile!] outFile [!outFile!] >> debug.txt
