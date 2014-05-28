@@ -23,41 +23,36 @@ for /f "tokens=1,2 delims=:, " %%a in (' find ":" ^< "config.json" ') do (
    set "%%~a=%%~b"
 )
 
-rem Normalise startTime, change delimiter from "_"  to ":" 
-set startTime=%startTime:_=:%
-
-rem File counter for Array Files
-set arrayFileCount=0
-
-rem Get the number of files. Not required 
-rem for /f %%A in ('dir ^| find "File(s)"') do set cnt=%%A
-
-rem Setup debug file
-rem echo array_files %array_files% > debug.txt
-
-rem Comment this out for production
-rem set array_files=C:\Dev\batch_files\array_files
-rem echo array_files %array_files% >> debug.txt
-echo head1: %head1%
+rem run through the files matching head1 prefix
 for %%f in (%head1%*) do (
   rem Increment file_count by 1
   
   set fullFileName=%%f
   set fileName=%%~nf
   set fileExt=%%~xf
-  set fileNumber=!fileExt:.=_!
-  echo fileName [%fullFileName%] %%f fileNumber [!fileNumber!] fileExt [!fileExt!] fileName [!fileName!]
+  rem set fileNumber=!fileExt:.=_!
+  echo fileName [!fileName!]
   
+    
+  for /F "tokens=5 delims=_" %%a in ("%%~nf") do (
+    rem set "%%~a=%%~b"
+    set fileNumber=%%a
+  )
+  rem echo fullFileName [!fullFileName!] 
+  rem echo f [%%f] 
+  rem echo fileNumber [!fileNumber!] 
+  rem echo fileNumber [%fileNumber%] 
+  rem echo fileExt [!fileExt!] 
    
-  rem Write parameter to IN file
-  echo %head1%!fileName!!fileNumber!.txt >> %output_dir%\%outputFile%!fileNumber!.txt
-  echo %head2%!fileName!!fileNumber!.txt >> %output_dir%\%outputFile%!fileNumber!.txt
+  rem Write parameter to output file from config.json
+  echo %head1%!fileNumber!.txt >> %output_dir%\%outputFile%!fileNumber!.txt
+  echo %head2%!fileNumber!.txt >> %output_dir%\%outputFile%!fileNumber!.txt
   
 )
 
 rem dir C:\Dev\batch_files\array_files\* /b /s >> test.txt rem MOD2SMP_B1HDS.in
 echo.
-echo Batch file and IN files created in [%output_dir%] 
+echo Output files created in [%output_dir%] 
 pause
 
 
