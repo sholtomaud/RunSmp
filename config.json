@@ -1,5 +1,6 @@
 {
   "head1" : "mod2smp_Impact1_CSG_hds_",
   "head2" : "mod2smp_BASE_hds_",
-  "outputFile" : "5x_95_DDN_"
+  "outputFile" : "5x_95_DDN_",
+  "inFile" : "subsmp"
 }

@@ -45,8 +45,9 @@ for %%f in (%head1%*) do (
   rem echo fileExt [!fileExt!] 
    
   rem Write parameter to output file from config.json
-  echo %head1%!fileNumber!.txt >> %output_dir%\%outputFile%!fileNumber!.txt
-  echo %head2%!fileNumber!.txt >> %output_dir%\%outputFile%!fileNumber!.txt
+  echo %head1%!fileNumber!.txt >> %output_dir%\%inFile%!fileNumber!.in
+  echo %head2%!fileNumber!.txt >> %output_dir%\%inFile%!fileNumber!.in
+  echo %outputFile%!fileNumber!.txt >> %output_dir%\%inFile%!fileNumber!.in
   
 )
 
