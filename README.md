@@ -7,7 +7,7 @@ refers to an individual array file, and output file.
 It assumes that all the mod2smp_Impact1_CSG_hds_ are in the same folder as itself
 
 ##Outputs 
-There is one output file from this bat file
+There is one output file type from this bat file. But many versions of this file a produced
 
 1. n 'subsmp%n%.in' files 
 
