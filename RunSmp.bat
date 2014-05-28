@@ -39,7 +39,7 @@ rem Comment this out for production
 rem set array_files=C:\Dev\batch_files\array_files
 rem echo array_files %array_files% >> debug.txt
 echo head1: %head1%
-for %%f in (%head1%.*) do (
+for %%f in (%head1%*) do (
   rem Increment file_count by 1
   
   set fullFileName=%%f
