@@ -38,31 +38,20 @@ rem echo array_files %array_files% > debug.txt
 rem Comment this out for production
 rem set array_files=C:\Dev\batch_files\array_files
 rem echo array_files %array_files% >> debug.txt
-
-for /f %%f in ('dir %head1%.*') do (
+echo head1: %head1%
+for %%f in (%head1%.*) do (
   rem Increment file_count by 1
-  set /a arrayFileCount+=1
-  set arrayFile=%%f
   
-  rem Get file name and folder from full file path 
-  for %%A in ("%%f") do (
-    set Folder=%%~dpA
-    set FileName=%%~nxA
-  )
+  set fullFileName=%%f
+  set fileName=%%~nf
+  set fileExt=%%~xf
+  set fileNumber=!fileExt:.=_!
+  echo fileName [%fullFileName%] %%f fileNumber [!fileNumber!] fileExt [!fileExt!] fileName [!fileName!]
   
-  rem set inFile=%output_dir%\MOD2SMP_ !arrayFileCount! .in
-  
-  rem Normalise filename to sub periods for underscore & create inFile name and outFile name
-  set FileName=!FileName:.=_!
-  set inFile=!FileName!.in
-  set outFile=!FileName!.txt
-  
-  rem Bit of debugging. 
-  rem echo file %%f arrayFileCount [!arrayFileCount!] inFile [!inFile!] outFile [!outFile!] >> debug.txt
-  
+   
   rem Write parameter to IN file
-  echo %head1%%%f.txt >> %output_dir%\!inFile!
-  echo %head2%%%f.txt >> %output_dir%\!inFile! 
+  echo %head1%!fileName!!fileNumber!.txt >> %output_dir%\%outputFile%!fileNumber!.txt
+  echo %head2%!fileName!!fileNumber!.txt >> %output_dir%\%outputFile%!fileNumber!.txt
   
 )
 
