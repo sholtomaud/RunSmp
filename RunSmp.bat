@@ -39,7 +39,7 @@ rem Comment this out for production
 rem set array_files=C:\Dev\batch_files\array_files
 rem echo array_files %array_files% >> debug.txt
 
-for /f %%f in ('dir /b %head1%.*') do (
+for /f %%f in ('dir %head1%.*') do (
   rem Increment file_count by 1
   set /a arrayFileCount+=1
   set arrayFile=%%f
@@ -61,8 +61,8 @@ for /f %%f in ('dir /b %head1%.*') do (
   rem echo file %%f arrayFileCount [!arrayFileCount!] inFile [!inFile!] outFile [!outFile!] >> debug.txt
   
   rem Write parameter to IN file
-  echo !arrayFile! >> %output_dir%\!inFile!
-  echo !outFile! >> %output_dir%\!inFile! 
+  echo %head1%%%f.txt >> %output_dir%\!inFile!
+  echo %head2%%%f.txt >> %output_dir%\!inFile! 
   
 )
 
