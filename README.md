@@ -18,6 +18,5 @@ same folder and named config.json
 2. The array files folder can be drag and dropped into the command window 
 3. The output folder can be drag and dropped into the command window
 4. The contents of the output folder needs to be located in the same folder as mod2smp.exe
-5. Rename the RunMod.txt to RunMod.bat and double click to run your mod2smp.exe job
 
 
